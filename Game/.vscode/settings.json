@@ -51,6 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Bright Horizons.sln",
+    "dotnet.defaultSolution": "Game.sln",
     "dotnet.preferCSharpExtension": true
 }
