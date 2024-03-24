@@ -36,13 +36,12 @@ public class Options_Menu : MonoBehaviour
 
         List<string> graphicsOptions = new List<string>(QualitySettings.names);
         graphicsDropdown.AddOptions(graphicsOptions);
-
         int currentQualityIndex = PlayerPrefs.GetInt("QualityIndex", QualitySettings.GetQualityLevel());
         graphicsDropdown.value = currentQualityIndex;
         graphicsDropdown.RefreshShownValue();
         graphicsDropdown.onValueChanged.AddListener(SetQuality);
 
-        float currentVolumeIndex = PlayerPrefs.GetFloat("VolumeIndex");
+        float currentVolumeIndex = PlayerPrefs.GetFloat("VolumeIndex"); 
         volumeSlider.value = currentVolumeIndex;
         OnVolumeChange(currentVolumeIndex);
         volumeSlider.onValueChanged.AddListener(OnVolumeChange);
