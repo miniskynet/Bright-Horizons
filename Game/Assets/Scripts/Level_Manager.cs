@@ -7,10 +7,18 @@ public class Level_Manager : MonoBehaviour
     public AudioClip finishSoundClip;
     private AudioSource audioSource;
     private static int currentLevel = 0; 
-    private int totalLevels = 2;
+    private int totalLevels;
 
     private void Start()
     {
+        int currentDifficultyIndex = PlayerPrefs.GetInt("DifficultyIndex");
+        if(currentDifficultyIndex == 0){
+            totalLevels = 3;
+        } else if (currentDifficultyIndex == 1){
+            totalLevels = 5;
+        } else if (currentDifficultyIndex == 2){
+            totalLevels = 10;
+        }
         audioSource = GetComponent<AudioSource>();
         PlayRandomBackgroundMusic();
     }
@@ -29,6 +37,7 @@ public class Level_Manager : MonoBehaviour
         currentLevel++;
         if (currentLevel >= totalLevels)
         {
+            currentLevel=0;
             SceneManager.LoadScene("End_Screen"); 
         }
         else

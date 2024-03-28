@@ -7,6 +7,8 @@ public class Options_Menu : MonoBehaviour
     public Dropdown resolutionDropdown;
     public Dropdown graphicsDropdown;
     public Slider volumeSlider;
+    public Dropdown difficultyDropdown;
+    public Dropdown learningDropdown;
 
     private List<Resolution> resolutions = new List<Resolution>
     {
@@ -16,6 +18,20 @@ public class Options_Menu : MonoBehaviour
         new Resolution { width = 1366, height = 768 },
         new Resolution { width = 1600, height = 900 },
         new Resolution { width = 1920, height = 1080 }
+    };
+
+    private List<string> difficulties = new List<string>
+    {
+        "Easy",
+        "Standard",
+        "Challenging"
+    };
+
+    private List<string> learnings = new List<string>
+    {
+        "Numbers",
+        "Letters",
+        "Colors"
     };
 
     void Start()
@@ -45,6 +61,21 @@ public class Options_Menu : MonoBehaviour
         volumeSlider.value = currentVolumeIndex;
         OnVolumeChange(currentVolumeIndex);
         volumeSlider.onValueChanged.AddListener(OnVolumeChange);
+
+        // Difficulty Dropdown
+        difficultyDropdown.AddOptions(difficulties);
+        int currentDifficultyIndex = PlayerPrefs.GetInt("DifficultyIndex", 0); // Default to 0 (Easy) if not set
+        difficultyDropdown.value = currentDifficultyIndex;
+        difficultyDropdown.RefreshShownValue();
+        difficultyDropdown.onValueChanged.AddListener(SetDifficulty);
+
+        // Learning Dropdown
+        learningDropdown.AddOptions(learnings);
+        int currentLearningIndex = PlayerPrefs.GetInt("LearningIndex", 0); // Default to 0 (Numbers) if not set
+        learningDropdown.value = currentLearningIndex;
+        learningDropdown.RefreshShownValue();
+        learningDropdown.onValueChanged.AddListener(SetLearning);
+
     }
 
     public void SetResolution(int resolutionIndex)
@@ -66,6 +97,22 @@ public class Options_Menu : MonoBehaviour
     {
         AudioListener.volume = volume;
         PlayerPrefs.SetFloat("VolumeIndex", volume);
+        PlayerPrefs.Save();
+    }
+
+    public void SetDifficulty(int difficultyIndex)
+    {
+        // Implement the logic to set the game difficulty based on the difficultyIndex
+        // For example, adjust the game parameters or save the index to PlayerPrefs
+        PlayerPrefs.SetInt("DifficultyIndex", difficultyIndex);
+        PlayerPrefs.Save();
+    }
+
+    public void SetLearning(int learningIndex)
+    {
+        // Implement the logic to set the learning content based on the learningIndex
+        // For example, adjust the game parameters or save the index to PlayerPrefs
+        PlayerPrefs.SetInt("LearningIndex", learningIndex);
         PlayerPrefs.Save();
     }
 

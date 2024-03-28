@@ -8,7 +8,8 @@ public class Procedural_Generation : MonoBehaviour
     public TileBase grassTile;
     public TileBase dirtTile;
     public GameObject collectiblePrefab;
-    public int levelWidth;
+    private int levelWidth;
+    public GameObject finishLine;
     public int baseLineHeight;
     public int maxHillHeight;
     public int maxHillWidth;
@@ -21,6 +22,17 @@ public class Procedural_Generation : MonoBehaviour
 
     void Start()
     {
+        int currentDifficultyIndex = PlayerPrefs.GetInt("DifficultyIndex");
+        if(currentDifficultyIndex == 0){
+            levelWidth = 100;
+            finishLine.transform.position = new Vector2(93,8);
+        } else if (currentDifficultyIndex == 1){
+            levelWidth = 150;
+            finishLine.transform.position = new Vector2(143,8);
+        } else if (currentDifficultyIndex == 2){
+            levelWidth = 200;
+            finishLine.transform.position = new Vector2(193,8);
+        }
         collectiblePositions = new List<Vector3Int>();
         GenerateLevel();
         PlaceCollectibles();
@@ -101,20 +113,25 @@ public class Procedural_Generation : MonoBehaviour
     }
 
     void PlaceCollectibles()
-{
-    float collectibleHeight = collectiblePrefab.GetComponent<SpriteRenderer>().bounds.size.y;
-    Transform collectibleParent = new GameObject("Collectibles").transform; // Create a parent object for collectibles
-
-    foreach (var position in collectiblePositions)
     {
-        // Adjust the y position to account for the height of the collectible
-        Vector3 worldPosition = tilemap.CellToWorld(new Vector3Int(position.x, position.y + 1, position.z));
-        worldPosition += new Vector3(0, collectibleHeight / 2, 0); // Offset to place collectible on top
+        float collectibleHeight = collectiblePrefab.GetComponent<SpriteRenderer>().bounds.size.y;
+        Transform collectibleParent = new GameObject("Collectibles").transform; // Create a parent object for collectibles
+        int count = 0;
 
-        // Instantiate the collectible as a child of the collectibleParent
-        GameObject collectibleInstance = Instantiate(collectiblePrefab, worldPosition, Quaternion.identity);
-        collectibleInstance.transform.SetParent(collectibleParent);
+        foreach (var position in collectiblePositions)
+        {
+            if(count%2==0){
+                // Adjust the y position to account for the height of the collectible
+            Vector3 worldPosition = tilemap.CellToWorld(new Vector3Int(position.x, position.y + 1, position.z));
+            worldPosition += new Vector3(0, collectibleHeight / 2, 0); // Offset to place collectible on top
+
+            // Instantiate the collectible as a child of the collectibleParent
+            GameObject collectibleInstance = Instantiate(collectiblePrefab, worldPosition, Quaternion.identity);
+            collectibleInstance.transform.SetParent(collectibleParent);
+            }
+            count++;
+            
+        }
     }
-}
 
 }
