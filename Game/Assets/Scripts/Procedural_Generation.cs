@@ -8,17 +8,19 @@ public class Procedural_Generation : MonoBehaviour
     public TileBase grassTile;
     public TileBase dirtTile;
     public GameObject collectiblePrefab;
+    public GameObject trapPrefab;
     private int levelWidth;
     public GameObject finishLine;
-    public int baseLineHeight;
-    public int maxHillHeight;
-    public int maxHillWidth;
-    public int barrierHeight;
-    public int platformFrequency;
-    public int platformLength;
-    public int safeZoneWidth; 
+    private int baseLineHeight = 5;
+    private int maxHillHeight;
+    private int maxHillWidth;
+    private int barrierHeight = 20;
+    private int platformFrequency;
+    private int platformLength;
+    private int safeZoneWidth = 10;
+    private int elementRange; 
 
-    private List<Vector3Int> collectiblePositions; // List to store potential collectible positions
+    private List<Vector3Int> itemPositions; // List to store potential collectible positions
 
     void Start()
     {
@@ -26,16 +28,31 @@ public class Procedural_Generation : MonoBehaviour
         if(currentDifficultyIndex == 0){
             levelWidth = 100;
             finishLine.transform.position = new Vector2(93,8);
+            maxHillHeight = 3;
+            maxHillWidth = 4;
+            platformFrequency = 15;
+            platformLength = 3;
+            elementRange = 10;
         } else if (currentDifficultyIndex == 1){
             levelWidth = 150;
             finishLine.transform.position = new Vector2(143,8);
+            maxHillHeight = 4;
+            maxHillWidth = 5;
+            platformFrequency = 10;
+            platformLength = 4;
+            elementRange = 5;
         } else if (currentDifficultyIndex == 2){
             levelWidth = 200;
             finishLine.transform.position = new Vector2(193,8);
+            maxHillHeight = 5;
+            maxHillWidth = 5;
+            platformFrequency = 2;
+            platformLength = 5;
+            elementRange = 3;
         }
-        collectiblePositions = new List<Vector3Int>();
+        itemPositions = new List<Vector3Int>();
         GenerateLevel();
-        PlaceCollectibles();
+        PlaceItems();
     }
 
     void GenerateLevel()
@@ -64,14 +81,18 @@ public class Procedural_Generation : MonoBehaviour
                 currentX += hillWidth;
             }
 
-            // Floating platforms
+            int currentDifficultyIndex = PlayerPrefs.GetInt("DifficultyIndex");
+
+            if(currentDifficultyIndex == 1 || currentDifficultyIndex == 2){
+                // Floating platforms
             if (Random.Range(0, platformFrequency) < 5 && currentX + platformLength < levelWidth - safeZoneWidth) // Random chance to create a platform
             {
                 CreatePlatform(currentX, baseLineHeight + Random.Range(2, maxHillHeight + 2), platformLength);
                 currentX += platformLength;
             }
+            }
 
-            currentX += Random.Range(1, 3); // Random gap after each hill or platform
+            currentX += Random.Range(1, elementRange); // Random gap after each hill or platform
         }
 
         // Create tall barriers at the start and end of the level
@@ -90,7 +111,7 @@ public class Procedural_Generation : MonoBehaviour
             tilemap.SetTile(new Vector3Int(x, baseLineHeight + height, 0), grassTile);
         }
         // Add the position of the top of the hill to the collectiblePositions list
-        collectiblePositions.Add(new Vector3Int(startX + width / 2, baseLineHeight + height, 0));
+        itemPositions.Add(new Vector3Int(startX + width / 2, baseLineHeight + height, 0));
     }
 
     void CreatePlatform(int startX, int height, int length)
@@ -100,7 +121,7 @@ public class Procedural_Generation : MonoBehaviour
             tilemap.SetTile(new Vector3Int(x, height, 0), grassTile);
         }
         // Add the position of the platform to the collectiblePositions list
-        collectiblePositions.Add(new Vector3Int(startX + length / 2, height, 0));
+        itemPositions.Add(new Vector3Int(startX + length / 2, height, 0));
     }
 
     void CreateBarrier(int startX, int height)
@@ -112,13 +133,13 @@ public class Procedural_Generation : MonoBehaviour
         tilemap.SetTile(new Vector3Int(startX, height, 0), grassTile);
     }
 
-    void PlaceCollectibles()
+    void PlaceItems()
     {
         float collectibleHeight = collectiblePrefab.GetComponent<SpriteRenderer>().bounds.size.y;
         Transform collectibleParent = new GameObject("Collectibles").transform; // Create a parent object for collectibles
         int count = 0;
 
-        foreach (var position in collectiblePositions)
+        foreach (var position in itemPositions)
         {
             if(count%2==0){
                 // Adjust the y position to account for the height of the collectible
@@ -133,5 +154,6 @@ public class Procedural_Generation : MonoBehaviour
             
         }
     }
+
 
 }

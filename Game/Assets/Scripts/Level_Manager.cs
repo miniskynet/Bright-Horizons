@@ -6,7 +6,7 @@ public class Level_Manager : MonoBehaviour
     public AudioClip[] backgroundMusicClips;
     public AudioClip finishSoundClip;
     private AudioSource audioSource;
-    private static int currentLevel = 0; 
+    public static int currentLevel = 0; 
     private int totalLevels;
 
     private void Start()
