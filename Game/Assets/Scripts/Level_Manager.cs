@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class Level_Manager : MonoBehaviour
     public static int currentLevel = 0; 
     private int totalLevels;
     [SerializeField] private Text currentLevelText;
+    public Text levelCompletedText;
 
     private void Start()
     {
@@ -31,7 +33,8 @@ public class Level_Manager : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             audioSource.PlayOneShot(finishSoundClip);
-            Invoke("CompleteLevel", 2f);
+            StartCoroutine(DisplayLevelCompletedText());
+            Invoke("CompleteLevel", 3f);
         }
     }
 
@@ -55,5 +58,12 @@ public class Level_Manager : MonoBehaviour
         int randomIndex = Random.Range(0, backgroundMusicClips.Length);
             audioSource.clip = backgroundMusicClips[randomIndex];
             audioSource.Play();
+    }
+
+    private IEnumerator DisplayLevelCompletedText()
+    {
+        levelCompletedText.gameObject.SetActive(true); // Enable the text element
+        yield return new WaitForSeconds(2f); // Wait for the specified duration
+        levelCompletedText.gameObject.SetActive(false); // Disable the text element
     }
 }
