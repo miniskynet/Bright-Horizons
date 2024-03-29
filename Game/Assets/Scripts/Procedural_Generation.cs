@@ -28,7 +28,7 @@ public class Procedural_Generation : MonoBehaviour
         if(currentDifficultyIndex == 0){
             levelWidth = 100;
             finishLine.transform.position = new Vector2(93,8);
-            maxHillHeight = 3;
+            maxHillHeight = 2;
             maxHillWidth = 4;
             platformFrequency = 15;
             platformLength = 3;
@@ -36,7 +36,7 @@ public class Procedural_Generation : MonoBehaviour
         } else if (currentDifficultyIndex == 1){
             levelWidth = 150;
             finishLine.transform.position = new Vector2(143,8);
-            maxHillHeight = 4;
+            maxHillHeight = 3;
             maxHillWidth = 5;
             platformFrequency = 15;
             platformLength = 4;
@@ -44,7 +44,7 @@ public class Procedural_Generation : MonoBehaviour
         } else if (currentDifficultyIndex == 2){
             levelWidth = 200;
             finishLine.transform.position = new Vector2(193,8);
-            maxHillHeight = 5;
+            maxHillHeight = 4;
             maxHillWidth = 5;
             platformFrequency = 2;
             platformLength = 5;
