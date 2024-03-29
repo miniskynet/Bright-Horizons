@@ -8,7 +8,9 @@ public class Procedural_Generation : MonoBehaviour
     public TileBase grassTile;
     public TileBase dirtTile;
     public GameObject collectiblePrefab;
-    public Sprite[] collectibleSprites;
+    public Sprite[] numberSprites;
+    public Sprite[] letterSprites;
+    public Sprite[] colorSprites;
     public GameObject trapPrefab;
     private int levelWidth;
     public GameObject finishLine;
@@ -138,7 +140,7 @@ public class Procedural_Generation : MonoBehaviour
     {
         int currentLearningIndex = PlayerPrefs.GetInt("LearningIndex");
         if(currentLearningIndex == 0){
-            collectiblePrefab.GetComponent<SpriteRenderer>().sprite = collectibleSprites[Level_Manager.currentLevel];
+            collectiblePrefab.GetComponent<SpriteRenderer>().sprite = numberSprites[Level_Manager.currentLevel];
             collectiblePrefab.transform.localScale = new Vector3(0.04f,0.04f,1);
         }
         Transform collectibleParent = new GameObject("Collectibles").transform; // Create a parent object for collectibles
