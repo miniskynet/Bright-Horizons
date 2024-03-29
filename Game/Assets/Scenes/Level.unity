@@ -269,6 +269,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87381915}
   m_CullTransparentMesh: 1
+--- !u!1 &199567491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 199567492}
+  - component: {fileID: 199567494}
+  - component: {fileID: 199567493}
+  m_Layer: 5
+  m_Name: Current Level Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &199567492
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199567491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1887927929}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -651.6533, y: 495.3}
+  m_SizeDelta: {x: 414.8934, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &199567493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199567491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 4494c245ee43a104db2b886d46fa584e, type: 3}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Current Level : '
+--- !u!222 &199567494
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199567491}
+  m_CullTransparentMesh: 1
 --- !u!1 &209981392
 GameObject:
   m_ObjectHideFlags: 0
@@ -118540,6 +118619,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 35967e8a4dfb1664e9b066939272c0a4, type: 3}
   - {fileID: 8300000, guid: 1f2ad53bacc245642854dbdc8ea71a9b, type: 3}
   finishSoundClip: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  currentLevelText: {fileID: 199567493}
 --- !u!1 &1194192517
 GameObject:
   m_ObjectHideFlags: 0
@@ -118552,7 +118632,7 @@ GameObject:
   - component: {fileID: 1194192520}
   - component: {fileID: 1194192519}
   m_Layer: 5
-  m_Name: Cherries Text
+  m_Name: Collectibles Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118574,8 +118654,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -684.1, y: 435.4}
-  m_SizeDelta: {x: 350, y: 40}
+  m_AnchoredPosition: {x: -651.6533, y: 435.4}
+  m_SizeDelta: {x: 414.8934, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1194192519
 MonoBehaviour:
@@ -118610,7 +118690,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cherries : 0'
+  m_Text: 'Collectibles : 0'
 --- !u!222 &1194192520
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -119039,14 +119119,8 @@ MonoBehaviour:
   grassTile: {fileID: 11400000, guid: 32113cf3ac916554794717a60315e981, type: 2}
   dirtTile: {fileID: 11400000, guid: c310a0d39d639ab4ba4eafb05b0ff08c, type: 2}
   collectiblePrefab: {fileID: 7492877401307502582, guid: 985215841cd4d9d4a8041be04f20c351, type: 3}
+  trapPrefab: {fileID: 0}
   finishLine: {fileID: 1105144958}
-  baseLineHeight: 5
-  maxHillHeight: 4
-  maxHillWidth: 5
-  barrierHeight: 20
-  platformFrequency: 20
-  platformLength: 3
-  safeZoneWidth: 10
 --- !u!1 &1700810490
 GameObject:
   m_ObjectHideFlags: 0
@@ -119296,6 +119370,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1194192518}
+  - {fileID: 199567492}
   - {fileID: 1821178948}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -119523,6 +119598,14 @@ PrefabInstance:
       propertyPath: cherriesText
       value: 
       objectReference: {fileID: 1194192519}
+    - target: {fileID: 5630803588790545478, guid: d5e50b565c86f2146ae78abcbbf59901, type: 3}
+      propertyPath: collectiblesText
+      value: 
+      objectReference: {fileID: 1194192519}
+    - target: {fileID: 5630803588790545478, guid: d5e50b565c86f2146ae78abcbbf59901, type: 3}
+      propertyPath: currentLevelText
+      value: 
+      objectReference: {fileID: 199567493}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Level_Manager : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class Level_Manager : MonoBehaviour
     private AudioSource audioSource;
     public static int currentLevel = 0; 
     private int totalLevels;
+    [SerializeField] private Text currentLevelText;
 
     private void Start()
     {
+        currentLevelText.text = "Current Level : " + (currentLevel + 1);
         int currentDifficultyIndex = PlayerPrefs.GetInt("DifficultyIndex");
         if(currentDifficultyIndex == 0){
             totalLevels = 3;
