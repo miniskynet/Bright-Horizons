@@ -119158,7 +119158,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 179a77756ce151442a108f87f84e0763, type: 2}
   - {fileID: 21300000, guid: 55d2757e68714d346a22a6da55a0ccff, type: 2}
   - {fileID: 21300000, guid: 8c74a6054f2d68b479ff0b5595a3edb7, type: 2}
-  colorSprites: []
+  colorSprites:
+  - {fileID: 21300000, guid: 5140f5d0e245d674dbb730979b0ffdc3, type: 3}
+  - {fileID: 21300000, guid: d459be7286c548641af182fb57067da9, type: 3}
+  - {fileID: 21300000, guid: c66cd46279a9f7243a6f54309fa52240, type: 3}
+  - {fileID: 21300000, guid: 8e9c79041e05042468166067a022d0cc, type: 3}
+  - {fileID: 21300000, guid: b6a2cc88a0e541148baa803819c7958c, type: 3}
+  - {fileID: 21300000, guid: 98f531560e5de554d8aa6f3eb4cb70ad, type: 3}
+  - {fileID: 21300000, guid: 0958525780b893343b96cd92552ad046, type: 3}
+  - {fileID: 21300000, guid: 9bd19920759abb844b67a5c463a491ff, type: 3}
+  - {fileID: 21300000, guid: 62c6ca88b9f679946ae215a62035907c, type: 3}
+  - {fileID: 21300000, guid: feb36a3f49986a14a8f185739b36e2cc, type: 3}
   trapPrefab: {fileID: 0}
   finishLine: {fileID: 1105144958}
 --- !u!1 &1700810490
