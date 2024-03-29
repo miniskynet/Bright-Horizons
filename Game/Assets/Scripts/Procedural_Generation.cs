@@ -8,6 +8,7 @@ public class Procedural_Generation : MonoBehaviour
     public TileBase grassTile;
     public TileBase dirtTile;
     public GameObject collectiblePrefab;
+    public Sprite[] collectibleSprites;
     public GameObject trapPrefab;
     private int levelWidth;
     public GameObject finishLine;
@@ -135,7 +136,11 @@ public class Procedural_Generation : MonoBehaviour
 
     void PlaceItems()
     {
-        float collectibleHeight = collectiblePrefab.GetComponent<SpriteRenderer>().bounds.size.y;
+        int currentLearningIndex = PlayerPrefs.GetInt("LearningIndex");
+        if(currentLearningIndex == 0){
+            collectiblePrefab.GetComponent<SpriteRenderer>().sprite = collectibleSprites[Level_Manager.currentLevel];
+            collectiblePrefab.transform.localScale = new Vector3(0.04f,0.04f,1);
+        }
         Transform collectibleParent = new GameObject("Collectibles").transform; // Create a parent object for collectibles
         int count = 0;
 
@@ -143,8 +148,7 @@ public class Procedural_Generation : MonoBehaviour
         {
             if(count%2==0){
                 // Adjust the y position to account for the height of the collectible
-            Vector3 worldPosition = tilemap.CellToWorld(new Vector3Int(position.x, position.y + 1, position.z));
-            worldPosition += new Vector3(0, collectibleHeight / 2, 0); // Offset to place collectible on top
+            Vector3 worldPosition = tilemap.CellToWorld(new Vector3Int(position.x, position.y+2, position.z));
 
             // Instantiate the collectible as a child of the collectibleParent
             GameObject collectibleInstance = Instantiate(collectiblePrefab, worldPosition, Quaternion.identity);

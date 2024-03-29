@@ -119120,6 +119120,17 @@ MonoBehaviour:
   grassTile: {fileID: 11400000, guid: 32113cf3ac916554794717a60315e981, type: 2}
   dirtTile: {fileID: 11400000, guid: c310a0d39d639ab4ba4eafb05b0ff08c, type: 2}
   collectiblePrefab: {fileID: 7492877401307502582, guid: 985215841cd4d9d4a8041be04f20c351, type: 3}
+  collectibleSprites:
+  - {fileID: 21300000, guid: dc49b6fa19899684e97e999691c8d3a6, type: 3}
+  - {fileID: 21300000, guid: 1f609002b0e6435409a124a03b458678, type: 3}
+  - {fileID: 21300000, guid: b8b10c410a9dafc469ffbcef79fe4497, type: 3}
+  - {fileID: 21300000, guid: a62a012a3ef439f46b1d1b6b1da45581, type: 3}
+  - {fileID: 21300000, guid: b5f0010b3cbed4d41b80d6d8c43ad1b8, type: 3}
+  - {fileID: 21300000, guid: e579877c7e59ebe49a064bbb5129b0e1, type: 3}
+  - {fileID: 21300000, guid: 00d2d60ecdb87834eaa3b10af2c95dd5, type: 3}
+  - {fileID: 21300000, guid: 66cb3b1d2b5587a4f9cdfab5a19f97a3, type: 3}
+  - {fileID: 21300000, guid: ee6e3031b05c29e4b8d813867343de43, type: 3}
+  - {fileID: 21300000, guid: cb8fd0e217587364181d8b4815bc6b00, type: 3}
   trapPrefab: {fileID: 0}
   finishLine: {fileID: 1105144958}
 --- !u!1 &1700810490
