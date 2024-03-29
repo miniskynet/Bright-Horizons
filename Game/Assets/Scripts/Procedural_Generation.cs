@@ -143,6 +143,10 @@ public class Procedural_Generation : MonoBehaviour
             collectiblePrefab.GetComponent<SpriteRenderer>().sprite = numberSprites[Level_Manager.currentLevel];
             collectiblePrefab.transform.localScale = new Vector3(0.04f,0.04f,1);
         }
+        if(currentLearningIndex == 1){
+            collectiblePrefab.GetComponent<SpriteRenderer>().sprite = letterSprites[Level_Manager.currentLevel];
+            collectiblePrefab.transform.localScale = new Vector3(2,2,1);
+        }
         Transform collectibleParent = new GameObject("Collectibles").transform; // Create a parent object for collectibles
         int count = 0;
 

@@ -119120,7 +119120,7 @@ MonoBehaviour:
   grassTile: {fileID: 11400000, guid: 32113cf3ac916554794717a60315e981, type: 2}
   dirtTile: {fileID: 11400000, guid: c310a0d39d639ab4ba4eafb05b0ff08c, type: 2}
   collectiblePrefab: {fileID: 7492877401307502582, guid: 985215841cd4d9d4a8041be04f20c351, type: 3}
-  collectibleSprites:
+  numberSprites:
   - {fileID: 21300000, guid: dc49b6fa19899684e97e999691c8d3a6, type: 3}
   - {fileID: 21300000, guid: 1f609002b0e6435409a124a03b458678, type: 3}
   - {fileID: 21300000, guid: b8b10c410a9dafc469ffbcef79fe4497, type: 3}
@@ -119131,6 +119131,34 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 66cb3b1d2b5587a4f9cdfab5a19f97a3, type: 3}
   - {fileID: 21300000, guid: ee6e3031b05c29e4b8d813867343de43, type: 3}
   - {fileID: 21300000, guid: cb8fd0e217587364181d8b4815bc6b00, type: 3}
+  letterSprites:
+  - {fileID: 21300000, guid: aa01c35b1ad11e648a66bf1cc02e89d6, type: 2}
+  - {fileID: 21300000, guid: aceb03ca2b9141844a9ced1519877917, type: 2}
+  - {fileID: 21300000, guid: 8f6c98b93bfa1944a95cf40e3f05f4a6, type: 2}
+  - {fileID: 21300000, guid: aa8093cab8dda984490800708bf5a635, type: 2}
+  - {fileID: 21300000, guid: 74b784f141b398b47b8877711fbecab9, type: 2}
+  - {fileID: 21300000, guid: 0dd5f3ecb3c3f294188f72e1b95f98f5, type: 2}
+  - {fileID: 21300000, guid: 4b8df1c43201eca44a3317e548583ea6, type: 2}
+  - {fileID: 21300000, guid: 71e3d466d6d890940bc9b10641823595, type: 2}
+  - {fileID: 21300000, guid: 1cbd950fcac61fe43b1290cf90b50209, type: 2}
+  - {fileID: 21300000, guid: c492de370a50fc446a8aba1e09490d5c, type: 2}
+  - {fileID: 21300000, guid: 5d349ebbb35ac6c479e8705fa3dd51a6, type: 2}
+  - {fileID: 21300000, guid: e9a3ba30917058e439f0bfcd37998b58, type: 2}
+  - {fileID: 21300000, guid: c3f337de6498aa94a88ab39a1467f21f, type: 2}
+  - {fileID: 21300000, guid: f3bb546007126ce49bc602fd41ddfe5d, type: 2}
+  - {fileID: 21300000, guid: ff0f5ef07a873314c9e29ad809c127b6, type: 2}
+  - {fileID: 21300000, guid: 4746eade001fc1c4ca8e09a96ec62dd5, type: 2}
+  - {fileID: 21300000, guid: 2ea26e4bee409d447b0e813139313702, type: 2}
+  - {fileID: 21300000, guid: 9738acc562da8484e8f0d9177414f44c, type: 2}
+  - {fileID: 21300000, guid: a6e076ea10c041c439abfeab4c3c9613, type: 2}
+  - {fileID: 21300000, guid: 16d866580da313b4497c4352952ed941, type: 2}
+  - {fileID: 21300000, guid: 0ac59e0ca6a84344fa40ce67907b8ef2, type: 2}
+  - {fileID: 21300000, guid: 533a03c1084622e42aeef22a520ff6c1, type: 2}
+  - {fileID: 21300000, guid: c2d09f082b5bd2c468430eb362aac3df, type: 2}
+  - {fileID: 21300000, guid: 179a77756ce151442a108f87f84e0763, type: 2}
+  - {fileID: 21300000, guid: 55d2757e68714d346a22a6da55a0ccff, type: 2}
+  - {fileID: 21300000, guid: 8c74a6054f2d68b479ff0b5595a3edb7, type: 2}
+  colorSprites: []
   trapPrefab: {fileID: 0}
   finishLine: {fileID: 1105144958}
 --- !u!1 &1700810490
