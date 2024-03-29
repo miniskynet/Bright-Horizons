@@ -38,7 +38,7 @@ public class Procedural_Generation : MonoBehaviour
             finishLine.transform.position = new Vector2(143,8);
             maxHillHeight = 4;
             maxHillWidth = 5;
-            platformFrequency = 10;
+            platformFrequency = 15;
             platformLength = 4;
             elementRange = 5;
         } else if (currentDifficultyIndex == 2){
