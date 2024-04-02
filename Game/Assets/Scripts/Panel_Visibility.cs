@@ -6,12 +6,16 @@ public class Panel_Visibility : MonoBehaviour
     public GameObject optionsMenu;
     public GameObject mainMenu;
 
-    public void displayPanel(){
+    //hide the main menu and display the options menu
+    public void displayPanel()
+    {
         optionsMenu.SetActive(true);
         mainMenu.SetActive(false);
     }
 
-    public void hidePanel(){
+    //hide the options menu and display the main menu
+    public void hidePanel()
+    {
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }

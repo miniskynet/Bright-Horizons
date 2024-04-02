@@ -10,6 +10,9 @@ public class Options_Menu : MonoBehaviour
     public Dropdown difficultyDropdown;
     public Dropdown learningDropdown;
 
+    //create lists to store the resolutions, 
+    //difficulty levels and learning preferences
+
     private List<Resolution> resolutions = new List<Resolution>
     {
         new Resolution { width = 640, height = 360 },
@@ -45,11 +48,14 @@ public class Options_Menu : MonoBehaviour
             resolutionOptions.Add(res.width + " x " + res.height);
         }
 
+        //populate the dropdown with the resolution values
+        //and set the default value as the saved user preference
         resolutionDropdown.AddOptions(resolutionOptions);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
         resolutionDropdown.onValueChanged.AddListener(SetResolution);
 
+        //get the graphical presets from the unity editor and populate the dropdown
         List<string> graphicsOptions = new List<string>(QualitySettings.names);
         graphicsDropdown.AddOptions(graphicsOptions);
         int currentQualityIndex = PlayerPrefs.GetInt("QualityIndex", QualitySettings.GetQualityLevel());
@@ -57,26 +63,33 @@ public class Options_Menu : MonoBehaviour
         graphicsDropdown.RefreshShownValue();
         graphicsDropdown.onValueChanged.AddListener(SetQuality);
 
-        float currentVolumeIndex = PlayerPrefs.GetFloat("VolumeIndex"); 
+        //change the master volume with the slider movement
+        float currentVolumeIndex = PlayerPrefs.GetFloat("VolumeIndex");
         volumeSlider.value = currentVolumeIndex;
         OnVolumeChange(currentVolumeIndex);
         volumeSlider.onValueChanged.AddListener(OnVolumeChange);
 
-        // Difficulty Dropdown
+        //populat the dropdown with difficulty levels
         difficultyDropdown.AddOptions(difficulties);
-        int currentDifficultyIndex = PlayerPrefs.GetInt("DifficultyIndex", 0); // Default to 0 (Easy) if not set
+        //set to easy by default
+        int currentDifficultyIndex = PlayerPrefs.GetInt("DifficultyIndex", 0);
         difficultyDropdown.value = currentDifficultyIndex;
         difficultyDropdown.RefreshShownValue();
         difficultyDropdown.onValueChanged.AddListener(SetDifficulty);
 
-        // Learning Dropdown
+        //populat the dropdown with learning resource options
         learningDropdown.AddOptions(learnings);
-        int currentLearningIndex = PlayerPrefs.GetInt("LearningIndex", 0); // Default to 0 (Numbers) if not set
+        //set to numbers by default
+        int currentLearningIndex = PlayerPrefs.GetInt("LearningIndex", 0);
         learningDropdown.value = currentLearningIndex;
         learningDropdown.RefreshShownValue();
         learningDropdown.onValueChanged.AddListener(SetLearning);
 
     }
+
+    //following set methods are called upon when the user 
+    //changes a setting from the options menu
+    //the selected option is saved to the PlayerPrefs file
 
     public void SetResolution(int resolutionIndex)
     {
@@ -102,16 +115,12 @@ public class Options_Menu : MonoBehaviour
 
     public void SetDifficulty(int difficultyIndex)
     {
-        // Implement the logic to set the game difficulty based on the difficultyIndex
-        // For example, adjust the game parameters or save the index to PlayerPrefs
         PlayerPrefs.SetInt("DifficultyIndex", difficultyIndex);
         PlayerPrefs.Save();
     }
 
     public void SetLearning(int learningIndex)
     {
-        // Implement the logic to set the learning content based on the learningIndex
-        // For example, adjust the game parameters or save the index to PlayerPrefs
         PlayerPrefs.SetInt("LearningIndex", learningIndex);
         PlayerPrefs.Save();
     }

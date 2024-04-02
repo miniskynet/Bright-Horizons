@@ -8,7 +8,7 @@ public class Level_Manager : MonoBehaviour
     public AudioClip[] backgroundMusicClips;
     public AudioClip finishSoundClip;
     private AudioSource audioSource;
-    public static int currentLevel = 0; 
+    public static int currentLevel = 0;
     private int totalLevels;
     [SerializeField] private Text currentLevelText;
     public Text levelCompletedText;
@@ -17,11 +17,16 @@ public class Level_Manager : MonoBehaviour
     {
         currentLevelText.text = "Current Level : " + (currentLevel + 1);
         int currentDifficultyIndex = PlayerPrefs.GetInt("DifficultyIndex");
-        if(currentDifficultyIndex == 0){
+        if (currentDifficultyIndex == 0)
+        {
             totalLevels = 3;
-        } else if (currentDifficultyIndex == 1){
+        }
+        else if (currentDifficultyIndex == 1)
+        {
             totalLevels = 5;
-        } else if (currentDifficultyIndex == 2){
+        }
+        else if (currentDifficultyIndex == 2)
+        {
             totalLevels = 10;
         }
         audioSource = GetComponent<AudioSource>();
@@ -40,30 +45,35 @@ public class Level_Manager : MonoBehaviour
 
     private void CompleteLevel()
     {
+        //if the current level is the last level,
+        //display the end screen
         currentLevel++;
         if (currentLevel >= totalLevels)
         {
-            currentLevel=0;
-            SceneManager.LoadScene("End_Screen"); 
+            currentLevel = 0;
+            SceneManager.LoadScene("End_Screen");
         }
+        //else generate a new level
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             PlayRandomBackgroundMusic();
         }
     }
 
     private void PlayRandomBackgroundMusic()
     {
+        //play a random audio file on each new level
         int randomIndex = Random.Range(0, backgroundMusicClips.Length);
-            audioSource.clip = backgroundMusicClips[randomIndex];
-            audioSource.Play();
+        audioSource.clip = backgroundMusicClips[randomIndex];
+        audioSource.Play();
     }
 
     private IEnumerator DisplayLevelCompletedText()
     {
-        levelCompletedText.gameObject.SetActive(true); // Enable the text element
-        yield return new WaitForSeconds(2f); // Wait for the specified duration
-        levelCompletedText.gameObject.SetActive(false); // Disable the text element
+        //display text, wait for a moment and deactivate it 
+        levelCompletedText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        levelCompletedText.gameObject.SetActive(false);
     }
 }

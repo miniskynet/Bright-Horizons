@@ -1,3 +1,6 @@
+//this class will not be used in the current iteration of the game
+//due to ethical issues
+
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
@@ -16,7 +19,9 @@ public class Player_Life : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Trap"))
+        //if player object collides with a trap gameobject
+        //call the die method
+        if (collision.gameObject.CompareTag("Trap"))
         {
             Die();
         }
@@ -24,6 +29,7 @@ public class Player_Life : MonoBehaviour
 
     private void Die()
     {
+        //play the associated animations and sound effects
         deathSoundEffect.Play();
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("Death");
