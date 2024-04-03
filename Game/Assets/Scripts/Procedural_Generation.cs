@@ -1,3 +1,4 @@
+//The initial code was generated with assistance from ChatGPT, an AI developed by OpenAI (OpenAI, 2023).
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
